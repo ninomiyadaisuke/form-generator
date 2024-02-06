@@ -7,5 +7,6 @@
   },
   "extends": [
     "markuplint:recommended-react"
-  ]
+  ],
+  "excludeFiles": ["./tailwind.config.ts"]
 }
