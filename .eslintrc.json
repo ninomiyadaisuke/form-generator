@@ -15,7 +15,7 @@
     "unused-imports/no-unused-imports": "error",
     "react/jsx-sort-props": "error",
     "import/order": [
-      "error",
+      "warn",
       {
         "groups": ["builtin", "external", "internal", "parent", "sibling", "index", "object", "type"],
         "newlines-between": "always",
