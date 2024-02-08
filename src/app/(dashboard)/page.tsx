@@ -1,6 +1,7 @@
 import { Suspense } from 'react';
 
 import { getFormStats } from './_actions';
+import OpenDialogButton from './_components/OpenDialogButton';
 import StatsCardList from './_components/StatsCardList';
 
 export default function Home() {
@@ -9,6 +10,7 @@ export default function Home() {
       <Suspense fallback={<StatsCardList loading={true} />}>
         <Wrapper />
       </Suspense>
+      <OpenDialogButton />
     </div>
   );
 }
