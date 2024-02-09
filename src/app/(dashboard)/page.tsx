@@ -1,7 +1,9 @@
 import { Suspense } from 'react';
 
+import { Separator } from '@/components/ui/separator';
+
 import { getFormStats } from './_actions';
-import OpenDialogButton from './_components/OpenDialogButton';
+import CreateForm from './_components/CreateForm';
 import StatsCardList from './_components/StatsCardList';
 
 export default function Home() {
@@ -10,7 +12,10 @@ export default function Home() {
       <Suspense fallback={<StatsCardList loading={true} />}>
         <Wrapper />
       </Suspense>
-      <OpenDialogButton />
+      <Separator className="my-6" />
+      <h2 className="col-span-2 text-4xl font-bold">Your forms</h2>
+      <Separator className="my-6" />
+      <CreateForm />
     </div>
   );
 }

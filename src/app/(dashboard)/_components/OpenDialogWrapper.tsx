@@ -1,3 +1,4 @@
+'use client';
 import React, { FC, ReactNode } from 'react';
 
 import {
@@ -16,6 +17,7 @@ type Props = {
 
 const OpenDialogWrapper: FC<Props> = (props) => {
   const { button, form } = props;
+
   return (
     <Dialog>
       <DialogTrigger asChild>{button}</DialogTrigger>
