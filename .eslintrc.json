@@ -14,6 +14,12 @@
   "rules": {
     "unused-imports/no-unused-imports": "error",
     "react/jsx-sort-props": "error",
+    "tailwindcss/no-custom-classname": [
+      "warn",
+      {
+        "whitelist": ["border-primary-\\/[0-9]+", "destructive", "text-md"]
+      }
+    ],
     "import/order": [
       "warn",
       {
