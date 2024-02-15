@@ -4,7 +4,6 @@ import { DndContext, useSensor, useSensors, MouseSensor, TouchSensor } from '@dn
 import { Form } from '@prisma/client';
 import React, { FC } from 'react';
 
-
 import Designer from './Designer';
 import DragOverlayWrapper from './DragOverlayWrapper';
 import PreviewDialogButton from './PreviewDialogButton';

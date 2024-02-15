@@ -12,8 +12,17 @@ export const useDesigner = () => {
   const [elements, setElements] = useAtom(elementsContexts);
   const [selectedElement, setSelectElement] = useAtom(selectedElementContext);
 
+  const addElement = (index: number, element: FormElementInstance) => {
+    setElements((prev) => {
+      const newElements = [...prev];
+      newElements.splice(index, 0, element);
+      return newElements;
+    });
+  };
+
   return {
     elements,
+    addElement,
     setElements,
     selectedElement,
     setSelectElement,
