@@ -6,16 +6,16 @@ import { FormElementInstance } from '../_types';
 
 const elementsContexts = atom<FormElementInstance[]>([]);
 
-const selectedElement = atom<FormElementInstance | null>(null);
+const selectedElementContext = atom<FormElementInstance | null>(null);
 
 export const useDesigner = () => {
   const [elements, setElements] = useAtom(elementsContexts);
-  const [selectElement, setSelectElement] = useAtom(selectedElement);
+  const [selectedElement, setSelectElement] = useAtom(selectedElementContext);
 
   return {
     elements,
     setElements,
-    selectElement,
+    selectedElement,
     setSelectElement,
   };
 };
