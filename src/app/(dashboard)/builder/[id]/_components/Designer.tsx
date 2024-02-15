@@ -1,22 +1,33 @@
 'use client';
 
-
-
-import { useDroppable } from '@dnd-kit/core';
+import { useDndMonitor, useDroppable } from '@dnd-kit/core';
 import React from 'react';
 
-import { cn } from '@/lib/utils';
+import { cn, idGenerator } from '@/lib/utils';
 
 import { useDesigner } from '../_hooks';
+import { ElementsType } from '../_types';
 
+import DesignerElementWrapper from './DesignerElementWrapper';
 import DesignerSidebar from './DesignerSidebar';
+import { FormElements } from './FormElements';
 
 const Designer = () => {
-  const { elements } = useDesigner();
+  const { elements, addElement } = useDesigner();
   const droppable = useDroppable({
     id: 'designer-drop-area',
     data: {
       isDesignerDropArea: true,
+    },
+  });
+
+  useDndMonitor({
+    onDragEnd: (event) => {
+      const { active, over } = event;
+      if (!active || !over) return;
+      const type = active.data.current?.type as ElementsType;
+      const newElement = FormElements[type].construct(idGenerator());
+      addElement(elements.length, newElement);
     },
   });
 
@@ -37,6 +48,14 @@ const Designer = () => {
           )}
           {!droppable.isOver && elements.length === 0 && (
             <p className="flex grow items-center text-3xl font-bold text-muted-foreground">Drop here</p>
+          )}
+
+          {elements.length > 0 && (
+            <div className="flex w-full flex-col gap-2 p-4">
+              {elements.map((element) => (
+                <DesignerElementWrapper element={element} key={element.id} />
+              ))}
+            </div>
           )}
         </div>
       </div>

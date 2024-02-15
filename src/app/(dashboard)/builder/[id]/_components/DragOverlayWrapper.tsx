@@ -9,8 +9,6 @@ import { SidebarButtonElementDragOverlay } from './SidebarButtonElement';
 const DragOverlayWrapper = () => {
   const [draggedItem, setDraggedItem] = useState<Active | null>(null);
 
-  // console.log(draggedItem);
-
   useDndMonitor({
     onDragStart: (event) => {
       setDraggedItem(event.active);
