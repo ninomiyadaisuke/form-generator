@@ -20,9 +20,14 @@ export const useDesigner = () => {
     });
   };
 
+  const removeElement = (id: string) => {
+    setElements((prev) => prev.filter((element) => element.id !== id));
+  };
+
   return {
     elements,
     addElement,
+    removeElement,
     setElements,
     selectedElement,
     setSelectElement,
