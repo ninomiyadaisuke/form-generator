@@ -5,6 +5,8 @@ import { MdTextFields } from 'react-icons/md';
 import { ElementsType, FormElement, FormElementInstance } from '../../../_types';
 
 import DesignerComponent from './DesignerComponent';
+import FormComponent from './FormComponent';
+import PropertiesComponent from './PropertiesComponent';
 
 const type: ElementsType = 'TextField';
 
@@ -31,8 +33,8 @@ export const TextFieldFormElement: FormElement = {
     label: 'Text field',
   },
   designerComponent: DesignerComponent,
-  formComponent: () => <div>formComponent</div>,
-  propertiesComponent: () => <div>propertiesComponent</div>,
+  formComponent: FormComponent,
+  propertiesComponent: PropertiesComponent,
 
   validate: (formElement: FormElementInstance, currentValue: string): boolean => {
     const element = formElement as CustomInstance;

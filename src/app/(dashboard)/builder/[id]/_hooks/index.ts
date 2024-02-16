@@ -10,7 +10,7 @@ const selectedElementContext = atom<FormElementInstance | null>(null);
 
 export const useDesigner = () => {
   const [elements, setElements] = useAtom(elementsContexts);
-  const [selectedElement, setSelectElement] = useAtom(selectedElementContext);
+  const [selectedElement, setSelectedElement] = useAtom(selectedElementContext);
 
   const addElement = (index: number, element: FormElementInstance) => {
     setElements((prev) => {
@@ -40,6 +40,6 @@ export const useDesigner = () => {
     updateElement,
     setElements,
     selectedElement,
-    setSelectElement,
+    setSelectedElement,
   };
 };
