@@ -21,6 +21,7 @@ export type FormElement = {
   }>;
   formComponent: React.FC;
   propertiesComponent: React.FC;
+  validate: (formElement: FormElementInstance, currentValue: string) => boolean;
 };
 
 export type FormElementsType = {
