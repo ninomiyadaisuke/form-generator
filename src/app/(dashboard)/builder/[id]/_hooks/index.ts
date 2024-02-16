@@ -24,10 +24,20 @@ export const useDesigner = () => {
     setElements((prev) => prev.filter((element) => element.id !== id));
   };
 
+  const updateElement = (id: string, element: FormElementInstance) => {
+    setElements((prev) => {
+      const newElements = [...prev];
+      const index = newElements.findIndex((element) => element.id === id);
+      newElements[index] = element;
+      return newElements;
+    });
+  };
+
   return {
     elements,
     addElement,
     removeElement,
+    updateElement,
     setElements,
     selectedElement,
     setSelectElement,
