@@ -1,4 +1,4 @@
-export type ElementsType = 'TextField';
+export type ElementsType = 'TextField' | 'CheckboxField';
 
 export type SubmitFunction = (key: string, value: string) => void;
 
