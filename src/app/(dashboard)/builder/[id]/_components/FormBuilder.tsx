@@ -42,7 +42,7 @@ const FormBuilder: FC<Props> = ({ form }) => {
             <PreviewDialogButton />
             {!form.published && (
               <>
-                <SaveFormBtn /> <PublishFormButton />
+                <SaveFormBtn id={form.id} /> <PublishFormButton />
               </>
             )}
           </div>
