@@ -10,10 +10,10 @@ import { FormElementInstance } from '../_types';
 
 import Designer from './Designer';
 import DragOverlayWrapper from './DragOverlayWrapper';
+import FormPublished from './FormPublished';
 import PreviewDialogButton from './PreviewDialogButton';
 import PublishFormButton from './PublishFormButton';
 import SaveFormBtn from './SaveFormBtn';
-
 
 type Props = {
   form: Form;
@@ -54,6 +54,10 @@ const FormBuilder: FC<Props> = ({ form }) => {
         <ImSpinner2 className="size-12 animate-spin" />
       </div>
     );
+  }
+
+  if (form.published) {
+    return <FormPublished id={form.id} shareURL={form.shareURL} />;
   }
 
   return (
