@@ -1,6 +1,6 @@
 'use client';
 
-import { useDraggable } from '@dnd-kit/core';
+import { useDraggable, useDroppable } from '@dnd-kit/core';
 import React, { useState } from 'react';
 import { BiSolidTrash } from 'react-icons/bi';
 
@@ -16,6 +16,24 @@ import { FormElements } from './FormElements';
 const DesignerElementWrapper = ({ element }: { element: FormElementInstance }) => {
   const [mouseIsOver, setMouseIsOver] = useState(false);
   const { removeElement, setSelectedElement } = useDesigner();
+
+  const topHalf = useDroppable({
+    id: element.id + '-top',
+    data: {
+      type: element.type,
+      elementId: element.id,
+      isTopHalfDesignerElement: true,
+    },
+  });
+
+  const bottomHalf = useDroppable({
+    id: element.id + '-bottom',
+    data: {
+      type: element.type,
+      elementId: element.id,
+      isBottomHalfDesignerElement: true,
+    },
+  });
 
   const draggable = useDraggable({
     id: element.id + '-drag-handler',
@@ -40,7 +58,10 @@ const DesignerElementWrapper = ({ element }: { element: FormElementInstance }) =
       }}
       onMouseEnter={() => setMouseIsOver(true)}
       onMouseLeave={() => setMouseIsOver(false)}
+      ref={draggable.setNodeRef}
     >
+      <div className="absolute h-1/2 w-full rounded-t-md" ref={topHalf.setNodeRef} />
+      <div className="absolute bottom-0 h-1/2 w-full rounded-b-md" ref={bottomHalf.setNodeRef} />
       {mouseIsOver && (
         <>
           <div className="absolute right-0 h-full">
@@ -60,7 +81,7 @@ const DesignerElementWrapper = ({ element }: { element: FormElementInstance }) =
           </div>
         </>
       )}
-
+      {topHalf.isOver && <div className="absolute top-0 h-[7px] w-full rounded-md rounded-b-none bg-primary"></div>}
       <div
         className={cn(
           'flex w-full h-[120px] items-center rounded-md bg-accent/40 px-4 py-2 pointer-events-none opacity-100',
@@ -69,6 +90,7 @@ const DesignerElementWrapper = ({ element }: { element: FormElementInstance }) =
       >
         <DesignerElement elementInstance={element} />
       </div>
+      {bottomHalf.isOver && <div className="absolute bottom-0 h-[7px] w-full rounded-md rounded-t-none bg-primary" />}
     </div>
   );
 };
